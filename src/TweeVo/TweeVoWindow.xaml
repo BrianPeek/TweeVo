@@ -1,0 +1,76 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:TweeVo="clr-namespace:TweeVo"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Class="TweeVo.TweeVoWindow"
+	Background="{DynamicResource WindowBackgroundBrush}"
+	Title="TweeVo" ResizeMode="CanMinimize" SizeToContent="WidthAndHeight"
+	Loaded="Window_Loaded" Closing="Window_Closing" WindowStartupLocation="CenterScreen" StateChanged="Window_StateChanged" 
+	Icon="/TweeVo;component/Icon.ico" mc:Ignorable="d">
+
+	<Window.Resources>
+		<DataTemplate x:Key="TivoItemTemplate">
+			<StackPanel Orientation="Horizontal">
+				<CheckBox IsChecked="{Binding Active}" VerticalAlignment="Center"/>
+				<TextBlock Text="{Binding}" VerticalAlignment="Center" />
+			</StackPanel>
+		</DataTemplate>
+	</Window.Resources>
+	<Grid x:Name="grid" Margin="5" Width="300">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="120" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="120" />
+			<RowDefinition Height="50" />
+			<RowDefinition Height="50" />
+			<RowDefinition Height="20" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="22" />
+		</Grid.RowDefinitions>
+		<DockPanel Grid.Row="0">
+			<TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Text="Please allow at least one minute for your list of TiVos to populate below." TextAlignment="Center" Foreground="White" Margin="0 0 0 5" />
+			<ListBox x:Name="lbTiVo" ItemTemplate="{StaticResource TivoItemTemplate}" />
+		</DockPanel>
+		<StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Horizontal">
+			<TextBlock Foreground="White" VerticalAlignment="Center"><Run Text="What is your "/><Hyperlink Foreground="Yellow" NavigateUri="https://www3.tivo.com/tivo-mma/index.do"><Run Text="Media Access Key"/></Hyperlink><Run Text="?"/></TextBlock>
+			<TextBox Width="80" VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="txtMAK" Text="{Binding MediaAccessKey, Converter={StaticResource ec}}" MaxLength="10" Margin="5 0 0 0" />
+		</StackPanel>
+		<GroupBox Grid.Row="2" Header="Twitter Credentials" VerticalAlignment="Center">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="100" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="30" />
+					<RowDefinition Height="30" />
+					<RowDefinition Height="30" />
+				</Grid.RowDefinitions>
+				<Label x:Name="label1" VerticalAlignment="Center" Content="Twitter Username: " />
+				<Label x:Name="lblAuthorized" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Content="This application has not been authorized." HorizontalAlignment="Center" />
+				<Label x:Name="lblTwitterUsername" Grid.Column="1" Background="Black" Content="{Binding TwitterUsername, Converter={StaticResource ec}, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+				<Button x:Name="btnAuthorize" Grid.Row="2" Grid.ColumnSpan="2" Width="120" Content="Authorize" Margin="0 0 5 0" Click="btnAuthorize_Click" />
+			</Grid>
+		</GroupBox>
+		<StackPanel Grid.Row="3" VerticalAlignment="Center">
+			<Label Content="How should tweets be prefixed?"/>
+			<ComboBox Width="191" HorizontalAlignment="Left" x:Name="cboPrefix" SelectedValue="{Binding TwitterPrefix}" />
+		</StackPanel>
+		<StackPanel Grid.Row="4" VerticalAlignment="Center">
+			<Label Content="How should suggestions be handled?"/>
+			<ComboBox Width="191" HorizontalAlignment="Left" x:Name="cboSuggestions" SelectedValue="{Binding Suggestions}" />
+		</StackPanel>
+		<CheckBox x:Name="chkStartup" Grid.Row="5" Content="Start with Windows?" IsChecked="{Binding StartWithWindows}" VerticalAlignment="Center" />
+		<StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"  >
+			<Button x:Name="btnSave" Width="80" Click="btnSave_Click" Content="Save" Margin="0 0 5 0"/>
+			<Button x:Name="btnExit" Width="80" Click="btnExit_Click" Content="Quit" Margin="5 0 0 0"/>
+		</StackPanel>
+		<TextBlock Grid.Row="7" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left">
+			<Hyperlink Foreground="Yellow" NavigateUri="http://www.TweeVo.org/"><Run Text="www.TweeVo.org"/></Hyperlink>
+		</TextBlock>
+		<TextBlock Grid.Row="7" x:Name="txtVersion" Text="v1.0.0.0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+		<TextBlock Grid.Row="7" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right">
+			<Hyperlink Foreground="Yellow" NavigateUri="http://www.Coding4Fun.com"><Run Text="www.Coding4Fun.com"/></Hyperlink>
+		</TextBlock>
+	</Grid>
+</Window>

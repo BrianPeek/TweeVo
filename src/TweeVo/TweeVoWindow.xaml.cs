@@ -195,15 +195,12 @@ namespace TweeVo
 		private void btnAuthorize_Click(object sender, RoutedEventArgs e)
 		{
 			AuthorizeUserDlg dlg = new AuthorizeUserDlg { Owner = this };
-			dlg.txtTwitterUsername.Text = TweeVoSettings.Default.TwitterUsername.DecryptString();
-			dlg.txtTwitterPassword.Password = TweeVoSettings.Default.TwitterPassword.DecryptString();
 
 			if (dlg.ShowDialog().Value == true)
 			{
 				TwitterAuthToken = dlg.Token;
 				TwitterAuthTokenSecret = dlg.TokenSecret;
-				TweeVoSettings.Default.TwitterUsername = dlg.txtTwitterUsername.Text;
-				TweeVoSettings.Default.TwitterPassword = dlg.txtTwitterPassword.Password;
+				string pin = dlg.txtPin.Text;
 				IsAuthorized = true;
 				DisplayAuthorizationStatus();
 			}

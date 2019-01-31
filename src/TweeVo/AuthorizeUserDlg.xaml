@@ -16,7 +16,7 @@
             <RowDefinition Height="10" />
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
-        <GroupBox Grid.Row="0" Header="Twitter Credentials" VerticalAlignment="Center">
+        <GroupBox Grid.Row="0" Header="Twitter Authentication" VerticalAlignment="Center">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100" />
@@ -24,12 +24,9 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
-                    <RowDefinition Height="30" />
                 </Grid.RowDefinitions>
-                <Label x:Name="label1" VerticalAlignment="Center" Content="Twitter Username"/>
-                <Label x:Name="label2" Grid.Row="1" VerticalAlignment="Center" Content="Twitter Password"/>
-                <TextBox x:Name="txtTwitterUsername" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                <PasswordBox x:Name="txtTwitterPassword" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" />
+                <Label x:Name="label1" VerticalAlignment="Center" Content="PIN"/>
+                <TextBox x:Name="txtPin" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
             </Grid>
         </GroupBox>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"  >

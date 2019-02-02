@@ -140,25 +140,9 @@ namespace TweeVo
 				prefix += "(S) ";
 
 			if(string.IsNullOrEmpty(nplEntry.EpisodeTitle))
-			{
-				tweet = string.Format("{0}{1} at {2} on {3} {4} ",
-									  prefix,
-									  nplEntry.Title,
-									  nplEntry.CaptureDate.ToShortTimeString(),
-									  nplEntry.SourceChannel,
-									  nplEntry.SourceStation);
-
-			}
+				tweet = $"{prefix}{nplEntry.Title} at {nplEntry.CaptureDate.ToShortTimeString()} on {nplEntry.SourceChannel} {nplEntry.SourceStation} ";
 			else
-			{
-				tweet = string.Format("{0}{1}: \"{2}\" at {3} on {4} {5} ",
-									  prefix,
-									  nplEntry.Title,
-									  nplEntry.EpisodeTitle, 
-									  nplEntry.CaptureDate.ToShortTimeString(), 
-									  nplEntry.SourceChannel, 
-									  nplEntry.SourceStation);
-			}
+				tweet = $"{prefix}{nplEntry.Title}: \"{nplEntry.EpisodeTitle}\" at {nplEntry.CaptureDate.ToShortTimeString()} on {nplEntry.SourceChannel} {nplEntry.SourceStation} ";
 
 			int extra = (tweet.Length + tinyUrl.Length) - 280;
 			if(extra > 0)

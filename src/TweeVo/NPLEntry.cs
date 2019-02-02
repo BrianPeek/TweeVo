@@ -21,6 +21,9 @@ namespace TweeVo
 
 		// the unique ID for this episode of this show (ex: EP005984700040)
 		public string ProgramID { get; set; }
+		public string SeriesID { get; set; }
+		public string ProgramServerID { get; set; }
+		public string SeriesServerID { get; set; }
 
 		// whether or not it was recorded as a Suggestion
 		public bool Suggestion { get; set; }

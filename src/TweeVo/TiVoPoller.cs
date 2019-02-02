@@ -112,9 +112,12 @@ namespace TweeVo
 		{
 			// this url will take you to the specific episode page...the "x" can be anything.
 
-			//string progId = nplEntry.ProgramID.Substring(0, 2) + new string('0', 14 - nplEntry.ProgramID.Length) + nplEntry.ProgramID.Substring(2);
-			//string url = "http://tvlistings.zap2it.com/tv/x/" + progId;
-			//string tinyUrl = GetShortUrl(url);
+			if(nplEntry.ProgramID.Contains("-"))
+				nplEntry.ProgramID = nplEntry.ProgramID.Split('-')[0];
+
+			string progId = nplEntry.ProgramID.Substring(0, 2) + new string('0', 14 - nplEntry.ProgramID.Length) + nplEntry.ProgramID.Substring(2);
+			string url = "http://tvlistings.zap2it.com/tv/x/" + progId;
+			string tinyUrl = GetShortUrl(url);
 
 			string tweet;
 
@@ -157,12 +160,11 @@ namespace TweeVo
 									  nplEntry.SourceStation);
 			}
 
-			//int extra = (tweet.Length + tinyUrl.Length) - 140;
-			//if(extra > 0)
-			//	tweet = tweet.Substring(0, tweet.Length-extra-4) + "... ";
+			int extra = (tweet.Length + tinyUrl.Length) - 280;
+			if(extra > 0)
+				tweet = tweet.Substring(0, tweet.Length-extra-4) + "... ";
 
-			//return HttpUtility.UrlEncode(tweet) + tinyUrl;
-			return tweet;
+			return tweet + tinyUrl;
 		}
 	}
 }

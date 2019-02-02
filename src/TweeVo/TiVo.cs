@@ -68,6 +68,9 @@ namespace TweeVo
 			                   	SourceStation = (string)details.Element(ns + "SourceStation"),
 			                   	CaptureDate = (details.Element(ns + "CaptureDate").Value).EpochToDateTime().RoundToNearestMinute(),
 			                   	ProgramID = (string)details.Element(ns + "ProgramId"),
+								SeriesID = (string)details.Element(ns + "SeriesId"),
+								ProgramServerID = (string)details.Element(ns + "ProgramServerId"),
+								SeriesServerID = (string)details.Element(ns + "SeriesServerId"),
 								// if the program ID lives in the suggestion list, than mark it as a suggestion
 								Suggestion = suggestionIds.Exists(s => s == (string)details.Element(ns + "ProgramId"))
 		                   };

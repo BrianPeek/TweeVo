@@ -7,7 +7,7 @@
         Background="{DynamicResource WindowBackgroundBrush}"
         Title="TweeVo Twitter Authorization" SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen" 
-        FocusManager.FocusedElement="{Binding ElementName=txtTwitterUsername}"
+        FocusManager.FocusedElement="{Binding ElementName=txtPin}"
         Icon="/TweeVo;component/Icon.ico" mc:Ignorable="d" ResizeMode="NoResize" ShowInTaskbar="False">
 
     <Grid x:Name="grid" Margin="5" Width="300">

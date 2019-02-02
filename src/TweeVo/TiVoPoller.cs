@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Threading;
-using System.Web;
 using System.Windows;
 using Tweetinvi;
 using Tweetinvi.Models;

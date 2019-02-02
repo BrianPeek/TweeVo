@@ -86,7 +86,7 @@ namespace TweeVo
 			XDocument doc;
 
 			// pull the NPL
-			string uri = string.Format("https://{0}/TiVoConnect?Command=QueryContainer&Container=%2F{1}&Recurse={2}", IpAddress, container, (recurse ? "Yes" : "No"));
+			string uri = $"https://{IpAddress}/TiVoConnect?Command=QueryContainer&Container=%2F{container}&Recurse={(recurse ? "Yes" : "No")}";
 			Logger.Log("Pulling " + uri + " from " + Machine + ", " + IpAddress + ", Last polled: " + LastPolled, LoggerSeverity.Info);
 
 			try
@@ -117,7 +117,7 @@ namespace TweeVo
 			WebResponse response = null;
 
 			// run the QueryServer method...returns a short document
-			string uri = string.Format("https://{0}/TiVoConnect?Command=QueryServer", IpAddress);
+			string uri = $"https://{IpAddress}/TiVoConnect?Command=QueryServer";
 			Logger.Log("Verifying MAK " + mak + " on " + Machine + ", " + IpAddress, LoggerSeverity.Info);
 
 			try

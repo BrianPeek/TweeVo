@@ -33,9 +33,6 @@ namespace TweeVo
 
 		private static void PollTiVo(object state)
 		{
-			string TwitterAuthToken = TweeVoSettings.Default.TwitterAuthToken;
-			string TwitterAuthTokenSecret = TweeVoSettings.Default.TwitterAuthTokenSecret;
-			//Auth.SetUserCredentials(TwitterConst.CONSUMER_KEY, TwitterConst.CONSUMER_SECRET, TwitterAuthToken, TwitterAuthTokenSecret);
 			int tries = 0;
 			bool success = false;
 	
@@ -110,11 +107,11 @@ namespace TweeVo
 
 		private static string CreateTwitterString(string tivoName, NPLEntry nplEntry)
 		{
-			// this url will take you to the specific episode page...the "x" can be anything.
-
+			// remove the series ID that's tacked on...is this a Hydra thing or something?
 			if(nplEntry.ProgramID.Contains("-"))
 				nplEntry.ProgramID = nplEntry.ProgramID.Split('-')[0];
 
+			// TODO: this is busted
 			string progId = nplEntry.ProgramID.Substring(0, 2) + new string('0', 14 - nplEntry.ProgramID.Length) + nplEntry.ProgramID.Substring(2);
 			string url = "http://tvlistings.zap2it.com/tv/x/" + progId;
 			string tinyUrl = GetShortUrl(url);
@@ -139,6 +136,7 @@ namespace TweeVo
 			if(nplEntry.Suggestion && TweeVoSettings.Default.Suggestions == SuggestionsType.ShowWithPrefix)
 				prefix += "(S) ";
 
+			// TODO: add media/screenshot or something?
 			if(string.IsNullOrEmpty(nplEntry.EpisodeTitle))
 				tweet = $"{prefix}{nplEntry.Title} at {nplEntry.CaptureDate.ToShortTimeString()} on {nplEntry.SourceChannel} {nplEntry.SourceStation} ";
 			else

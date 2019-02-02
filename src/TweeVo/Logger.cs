@@ -20,7 +20,7 @@ namespace TweeVo
 
 			try
 			{
-				sw.WriteLine(String.Format("{0} - {1:G}: {2}", severity, System.DateTime.Now, msg));
+				sw.WriteLine($"{severity} - {DateTime.Now:G}: {msg}");
 			}
 			finally
 			{

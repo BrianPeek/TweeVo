@@ -32,8 +32,8 @@
 			<ListBox x:Name="lbTiVo" ItemTemplate="{StaticResource TivoItemTemplate}" />
 		</DockPanel>
 		<StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Horizontal">
-			<TextBlock Foreground="White" VerticalAlignment="Center"><Run Text="What is your "/><Hyperlink Foreground="Yellow" NavigateUri="https://www3.tivo.com/tivo-mma/index.do"><Run Text="Media Access Key"/></Hyperlink><Run Text="?"/></TextBlock>
-			<TextBox Width="80" VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="txtMAK" Text="{Binding MediaAccessKey, Converter={StaticResource ec}}" MaxLength="10" Margin="5 0 0 0" />
+			<TextBlock Foreground="White" VerticalAlignment="Center"><Run Text="What is your "/><Hyperlink Foreground="Yellow" NavigateUri="https://www.tivo.com/tivo-mma/showmakey.do"><Run Text="Media Access Key"/></Hyperlink><Run Text="?"/></TextBlock>
+			<TextBox Width="80" VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="txtMAK" Text="{Binding MediaAccessKey}" MaxLength="10" Margin="5 0 0 0" />
 		</StackPanel>
 		<GroupBox Grid.Row="2" Header="Twitter Credentials" VerticalAlignment="Center">
 			<Grid>
@@ -44,11 +44,8 @@
 				<Grid.RowDefinitions>
 					<RowDefinition Height="30" />
 					<RowDefinition Height="30" />
-					<RowDefinition Height="30" />
 				</Grid.RowDefinitions>
-				<Label x:Name="label1" VerticalAlignment="Center" Content="Twitter Username: " />
-				<Label x:Name="lblAuthorized" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Content="This application has not been authorized." HorizontalAlignment="Center" />
-				<Label x:Name="lblTwitterUsername" Grid.Column="1" Background="Black" Content="{Binding TwitterUsername, Converter={StaticResource ec}, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+				<Label x:Name="lblAuthorized" Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Content="This application has not been authorized." HorizontalAlignment="Center" />
 				<Button x:Name="btnAuthorize" Grid.Row="2" Grid.ColumnSpan="2" Width="120" Content="Authorize" Margin="0 0 5 0" Click="btnAuthorize_Click" />
 			</Grid>
 		</GroupBox>
@@ -66,11 +63,11 @@
 			<Button x:Name="btnExit" Width="80" Click="btnExit_Click" Content="Quit" Margin="5 0 0 0"/>
 		</StackPanel>
 		<TextBlock Grid.Row="7" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left">
-			<Hyperlink Foreground="Yellow" NavigateUri="http://www.TweeVo.org/"><Run Text="www.TweeVo.org"/></Hyperlink>
+			<Hyperlink Foreground="Yellow" NavigateUri="https://tweevo.org/"><Run Text="TweeVo.org"/></Hyperlink>
 		</TextBlock>
 		<TextBlock Grid.Row="7" x:Name="txtVersion" Text="v1.0.0.0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 		<TextBlock Grid.Row="7" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right">
-			<Hyperlink Foreground="Yellow" NavigateUri="http://www.Coding4Fun.com"><Run Text="www.Coding4Fun.com"/></Hyperlink>
+			<Hyperlink Foreground="Yellow" NavigateUri="https://brianpeek.com"><Run Text="brianpeek.com"/></Hyperlink>
 		</TextBlock>
 	</Grid>
 </Window>

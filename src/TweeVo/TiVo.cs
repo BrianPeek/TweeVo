@@ -89,7 +89,7 @@ namespace TweeVo
 			try
 			{
 				request = (HttpWebRequest)WebRequest.Create(uri);
-				request.Credentials = new NetworkCredential("tivo", TweeVoSettings.Default.MediaAccessKey.DecryptString());
+				request.Credentials = new NetworkCredential("tivo", TweeVoSettings.Default.MediaAccessKey);
 				// accept any ssl certificate
 				ServicePointManager.ServerCertificateValidationCallback += delegate { return true; };
 
@@ -120,7 +120,7 @@ namespace TweeVo
 			try
 			{
 				request = (HttpWebRequest)WebRequest.Create(uri);
-				request.Credentials = new NetworkCredential("tivo", TweeVoSettings.Default.MediaAccessKey.DecryptString());
+				request.Credentials = new NetworkCredential("tivo", TweeVoSettings.Default.MediaAccessKey);
 				ServicePointManager.ServerCertificateValidationCallback += delegate { return true; };
 
 				// if we get this far, we had a successful request

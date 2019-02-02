@@ -76,30 +76,22 @@ namespace TweeVo
 			if (IsAuthorized)	
 				lblAuthorized.Content = "Authorized to post to Twitter.";
 			else
-			{
-				lblTwitterUsername.Content = "Unauthorized";
 				lblAuthorized.Content = "This application has not been authorized.";
-			}
 		}
 
 		public bool CheckAuthorization()
 		{
 			IsAuthorized = false;
+
 			TwitterAuthToken = TweeVoSettings.Default.TwitterAuthToken;
 			TwitterAuthTokenSecret = TweeVoSettings.Default.TwitterAuthTokenSecret;
-			Auth.SetUserCredentials(TwitterConst.CONSUMER_KEY, TwitterConst.CONSUMER_SECRET, TwitterAuthToken, TwitterAuthTokenSecret);
-			IsAuthorized = true;
 
-			//if (!string.IsNullOrEmpty(TwitterAuthToken))
-			//{
-			//	string errorMsg = "";
-			//	IsAuthorized = Twitter.VerifyTwitterCredentials(TwitterConst.CONSUMER_SECRET, TwitterAuthToken, TwitterAuthTokenSecret, ref errorMsg);
-			//	if(!IsAuthorized)
-			//		MessageBox.Show("User not authorized with Twitter: " + errorMsg, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-
-			//	DisplayAuthorizationStatus();
-			//}
-
+			if (!string.IsNullOrEmpty(TwitterAuthToken))
+			{
+				Auth.SetUserCredentials(TwitterConst.CONSUMER_KEY, TwitterConst.CONSUMER_SECRET, TwitterAuthToken, TwitterAuthTokenSecret);
+				IsAuthorized = true;
+				DisplayAuthorizationStatus();
+			}
 			return IsAuthorized;
 		}
 
@@ -200,7 +192,7 @@ namespace TweeVo
 			{
 				TwitterAuthToken = dlg.Token;
 				TwitterAuthTokenSecret = dlg.TokenSecret;
-				string pin = dlg.txtPin.Text;
+
 				IsAuthorized = true;
 				DisplayAuthorizationStatus();
 			}

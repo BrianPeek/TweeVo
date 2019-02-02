@@ -38,9 +38,9 @@ namespace TweeVo
 			// Use the user credentials in your application
 			Auth.SetCredentials(userCredentials);
 
-			TweeVoSettings.Default.TwitterAuthToken = userCredentials.AccessToken;
-			TweeVoSettings.Default.TwitterAuthTokenSecret = userCredentials.AccessTokenSecret;
-			TweeVoSettings.Default.Save();
+			Token = userCredentials.AccessToken;
+			TokenSecret = userCredentials.AccessTokenSecret;
+			this.DialogResult = true;
 		}
 	}
 }
